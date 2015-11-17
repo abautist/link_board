@@ -3,6 +3,7 @@
 <head>
 	<!-- Latest compiled and minified CSS & JS -->
 	<link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="icon" href="<%= asset_path( 'favicon.ico' ) %>" />
 	<script src="//code.jquery.com/jquery.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <title>LinkBoard</title>
@@ -11,6 +12,31 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav class="navbar navbar-default" role="navigation">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="/">Home</a>
+	</div>
+
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse navbar-ex1-collapse">
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="/posts/new">Add a post</a></li>
+		</ul>
+		
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/login">Login</a></li>
+			<li><a href="/logout">Logout</a></li>
+			<li><a href="/signup">Sign-Up</a></li>
+		</ul>
+	</div><!-- /.navbar-collapse -->
+</nav>
 <div class="container">
 	<%= render 'partials/flash' %>
 

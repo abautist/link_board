@@ -10,13 +10,14 @@ class SessionsController < ApplicationController
   		flash[:success] = "#{user.email} logged in!"
   		redirect_to root_path
   	else
-  		flash[:danger] = "Credentials invalid!"
+  		flash[:danger] = "You must be logged in with the correct username and password!"
   		redirect_to login_path
   	end
   end
 
   def destroy
     session[:user_id] = nil
+    flash[:success] = "You have successfully logged out!"
     redirect_to root_path
   end
 

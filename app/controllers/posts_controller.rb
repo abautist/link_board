@@ -10,13 +10,13 @@ class PostsController < ApplicationController
   end
 
   def create
-  	User.find_by_id(session[:user_id]).post.create post_params
+  	current_user.post.create post_params
   	redirect_to root_path
   end
 
   private
 
   def post_params
-  	params.require(:user).permit(:title, :link)
+  	params.require(:post).permit(:title, :link)
   end
 end
