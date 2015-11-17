@@ -1,2 +1,11 @@
-<h1>Post#index</h1>
-<p>Find me in app/views/post/index.html.erb</p>
+<h1>Hacker News</h1>
+
+<%= link_to "Create Post", new_post_path, class: 'btn btn-default', style: 'margin-bottom: 1%' %>
+
+<% @posts.each do |post| %>
+<div class="well">
+	<h2><%= post.title %>
+		<small><%= post.link %></small>
+	</h2>
+</div>
+<% end %>
