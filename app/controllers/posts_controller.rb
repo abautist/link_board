@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :is_authenticated?, only: [:new, :create]
+  before_action :is_authenticated?, only: [:index, :new, :create]
 
   def index
   	@posts = Post.all

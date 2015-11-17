@@ -6,7 +6,7 @@
 	<link rel="icon" href="<%= asset_path( 'favicon.ico' ) %>" />
 	<script src="//code.jquery.com/jquery.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <title>LinkBoard</title>
+  <title>Link Board</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -27,13 +27,19 @@
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="/posts/new">Add a post</a></li>
+			<li><a href="/posts/new">Add a post</a></li>
+			<% if @current_user %>
+			<li><a href="#">Hello <%= @current_user.name %>, you are currently logged in</a></li>
+			<% end %>
 		</ul>
 		
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="/login">Login</a></li>
-			<li><a href="/logout">Logout</a></li>
-			<li><a href="/signup">Sign-Up</a></li>
+			<% if @current_user %>
+				<li><a href="/logout">Logout</a></li>
+			<% else %>
+				<li><a href="/login">Login</a></li>
+				<li><a href="/signup">Sign-Up</a></li>
+			<% end %>
 		</ul>
 	</div><!-- /.navbar-collapse -->
 </nav>
