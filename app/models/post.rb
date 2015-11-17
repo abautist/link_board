@@ -9,7 +9,8 @@ class Post < ActiveRecord::Base
 	}
 
 	validates :link,
-	presence: true
+	presence: true,
+	:url => true
 
   belongs_to :user
 

@@ -4,8 +4,8 @@
 
 <% @posts.each do |post| %>
 <div class="well">
-	<h2><%= post.title %>
-		<small><%= post.link %></small>
+	<h2><a href="<%= post.link %>"><%= post.title %></a>
+		<small><%= post.user.name %></small>
 	</h2>
 </div>
 <% end %>

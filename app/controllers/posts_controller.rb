@@ -11,6 +11,7 @@ class PostsController < ApplicationController
 
   def create
   	User.find_by_id(session[:user_id]).post.create post_params
+  	redirect_to root_path
   end
 
   private

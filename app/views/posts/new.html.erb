@@ -1,8 +1,10 @@
 <h1>New Post</h1>
 
-<%= bootstrap_form_for @post do |p| %>
-	<%= p.text_field :title %>
-	<%= p.text_area :link %>
+<%= bootstrap_form_for @post do |f| %>
+	<%= f.text_field :title %>
+	<%= f.text_area :link %>
 
-	<%= p.primary %>
+	<%= f.primary %>
 <% end %>
+
+<%= link_to "&larr Back", root_path, class: "btn btn-default" %>
