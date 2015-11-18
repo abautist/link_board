@@ -13,5 +13,6 @@ class Post < ActiveRecord::Base
 	:url => true
 
   belongs_to :user
+  has_many :comment
 
 end

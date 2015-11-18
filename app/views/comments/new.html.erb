@@ -1,0 +1,9 @@
+<h1>New Comment</h1>
+
+<%= bootstrap_form_for [@post, @comment] do |f| %>
+	<%= f.text_area :body %>
+
+	<p><%= f.primary %></p>
+<% end %>
+
+<p><%= link_to "Back", post_comments_path, class: "btn btn-default" %></p>

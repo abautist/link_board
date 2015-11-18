@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  # get 'comments/index'
+
+  # get 'comments/new'
+
+  # get 'comments/create'
+
   # get 'posts/new'
 
   # get 'posts/create'
@@ -10,8 +16,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'posts#index'
-  get 'posts/new' => 'posts#new'
-  post 'posts' => 'posts#create'
+  # get 'posts/new' => 'posts#new'
+  # post 'posts' => 'posts#create'
 
   # Example of regular route:
   get 'login' => 'sessions#new'
@@ -21,7 +27,9 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
   post 'signup' => 'users#create'
 
-  resources :posts
+  resources :posts, only: [:new, :create, :show, :destroy] do
+    resources :comments, only: [:index, :new, :create]
+  end
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

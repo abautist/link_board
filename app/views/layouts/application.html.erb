@@ -12,6 +12,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel">Sign up</h4>
+	      </div>
+				<div class="modal-body form-control" >
+					<%= bootstrap_form_for :user do |f| %>
+						<%= f.text_field :name, placeholder: "Enter your name", input_html: { class: "form-control"} %>
+						<%= f.text_field :email, placeholder: "Enter your email", input_html: { class: "form-control"} %>
+						<%= f.password_field :password, placeholder: "Enter your password", input_html: { class: "form-control"} %>
+						<%= f.submit "Signup" %>
+					<% end %>
+	      </div>
+	    </div>
+	  </div>
+</div>
 <nav class="navbar navbar-default" role="navigation">
 	<!-- Brand and toggle get grouped for better mobile display -->
 	<div class="navbar-header">
@@ -37,15 +56,17 @@
 			<% if @current_user %>
 				<li><a href="/logout">Logout</a></li>
 			<% else %>
-				<li><a href="/login">Login</a></li>
-				<li><a href="/signup">Sign-Up</a></li>
+				<li><%= link_to 'Login', login_path %></li>
+				<li><%= link_to 'Sign-Up', signup_path, 'data-toggle' => 'modal', 'data-target' => "#myModal" %></li>
 			<% end %>
 		</ul>
 	</div><!-- /.navbar-collapse -->
 </nav>
+	
+
+
 <div class="container">
 	<%= render 'partials/flash' %>
-
 	<%= yield %>
 </div>
 
