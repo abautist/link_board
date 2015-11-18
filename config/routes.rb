@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   post 'signup' => 'users#create'
 
   resources :posts, only: [:new, :create, :show, :destroy] do
-    resources :comments, only: [:index, :new, :create]
+    resources :comments, only: [:index, :new, :create, :destroy]
   end
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
