@@ -10,8 +10,18 @@ class PostsController < ApplicationController
   end
 
   def create
-  	current_user.post.create post_params
-  	redirect_to root_path
+  	post = Post.create post_params do |p|
+      p.user_id = @current_user.id
+      p.save
+    end
+    if post.valid?
+      flash[:success] = 'Post created'
+      redirect_to root_path
+    else
+      messages = post.errors.map { |k, v| "#{k} #{v}" }
+      flash[:danger] = messages.join(', ')
+      redirect_to new_post_path
+    end
   end
 
   def show
@@ -19,10 +29,15 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    p = Post.find params[:id]
-    p.comment.clear
-    p.destroy
-    redirect_to root_path
+      p = Post.find params[:id]
+    if current_user.id != p.user.id
+      flash[:danger] = 'Cannot delete another person\'s post'
+      redirect_to root_path
+    else  
+      p.comment.clear
+      p.destroy
+      redirect_to root_path
+    end
   end
 
   private

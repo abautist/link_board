@@ -15,5 +15,9 @@
  */
 
  body {
- 	background-image: url(sprinkles.png);
+ 		background-image: url(sprinkles.png);
+ }
+
+ .modal-width {
+ 		max-width: 100px;
  }

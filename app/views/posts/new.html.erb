@@ -4,7 +4,7 @@
 	<%= f.text_field :title %>
 	<%= f.text_area :link %>
 
-	<%= f.primary %>
+	<p><%= f.primary %></p>
 <% end %>
 
-<%= link_to "Back", root_path, class: "btn btn-default" %>
+<%= link_to "&larr; Back".html_safe, root_path, class: "btn btn-default" %>
